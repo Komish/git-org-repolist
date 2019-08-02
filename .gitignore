@@ -14,5 +14,5 @@
 .glide/
 
 # Project-specific
-git-private-org-repo-ls
+git-org-repolist
 builds/

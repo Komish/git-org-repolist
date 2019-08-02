@@ -1,13 +1,15 @@
-# git-private-org-repo-ls
+# git-org-repolist
 
-Command line utility to list the repositories available within a private organization's scope on Github
+Command line utility to list the repositories available within an organization's (private or public) scope on Github.
 
 ## Getting Started
 
-* Download the builds tarball/zip from the [releases page](https://github.com/komish/git-private-org-repo-ls/releases).
+* Download the builds tarball/zip from the [releases page](https://github.com/komish/git-org-repolist/releases).
 * Extract tarball/zip and find the relevant binary for your OS-architecture.
 * Place at a preferred location in your user path and mark executable (if necessary).
-* Generate a [Github Personal Access Token](https://github.com/settings/tokens) with the following permissions:
+* Generate a [Github Personal Access Token](https://github.com/settings/tokens) with:
+  * No additional oath2 scopes for **Public Repos**:
+  * The following oath2 scopes for **Private Repos**:
     * repo:status
     * repo_deployment
     * public_repo
@@ -21,7 +23,7 @@ NOTE: An improperly scoped token will return a successful return code (because t
 
 
 ```
-# git-private-org-repo-ls --help
+# git-org-repolist --help
 List repositories that exist within a private organization on Github.
 
 Requires a personal access token be placed in $HOME/.gittoken
@@ -30,7 +32,7 @@ Requires a personal access token be placed in $HOME/.gittoken
 Required token scope:
 	repo:status, repo_deployment, public_repo, repo:invite, read:org
 
-Usage: ./git-private-org-repo-ls [OPTIONS] orgname
+Usage: git-org-repolist [OPTIONS] orgname
   -L	Print your Github API limits.
   -v	Display the version of this utility.
 ```
@@ -38,7 +40,7 @@ Usage: ./git-private-org-repo-ls [OPTIONS] orgname
 ## Example Output
 
 ```
-# git-private-org-repo-ls supercool-org
+# git-org-repolist supercool-org
 -----------------------------------
          Name: supercool-repo
          Link: https://github.com/supercool-org/supercool-repo
@@ -48,7 +50,7 @@ Clone (HTTPS): https://github.com/supercool-org/supercool-repo
 (...)
 ```
 
-## Build for Multiple Platforms
+## Hacking and Building for Multiple Platforms
 
 Binaries are built using the following process for multiple platforms.
 
@@ -58,10 +60,10 @@ Binaries are built using the following process for multiple platforms.
 * Run build commands to compile for various platforms.
 
 ```
-env GOOS=linux GOARCH=amd64 go build -o builds/linux-amd64/git-private-org-repo-ls
-env GOOS=linux GOARCH=386 go build -o builds/linux-386/git-private-org-repo-ls
-env GOOS=linux GOARCH=arm go build -o builds/linux-arm/git-private-org-repo-ls
-env GOOS=linux GOARCH=arm64 go build -o builds/linux-arm64/git-private-org-repo-ls
-env GOOS=windows GOARCH=amd64 go build -o builds/windows-amd64/git-private-org-repo-ls.exe
-env GOOS=darwin GOARCH=amd64 go build -o builds/darwin-amd64/git-private-org-repo-ls
+env GOOS=linux GOARCH=amd64 go build -o builds/linux-amd64/git-org-repolist
+env GOOS=linux GOARCH=386 go build -o builds/linux-386/git-org-repolist
+env GOOS=linux GOARCH=arm go build -o builds/linux-arm/git-org-repolist
+env GOOS=linux GOARCH=arm64 go build -o builds/linux-arm64/git-org-repolist
+env GOOS=windows GOARCH=amd64 go build -o builds/windows-amd64/git-org-repolist.exe
+env GOOS=darwin GOARCH=amd64 go build -o builds/darwin-amd64/git-org-repolist
 ```
